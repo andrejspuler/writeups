@@ -23,5 +23,5 @@ Another example is to load inband `/etc/passwd` file:
 
 ![](xee_lfi.png)
 
-### Remediation
+### Mitigation
 Update to the latest release of Chamilo LMS. Following is the specific fix - Commit [e71437c8de809044ba3ae1b181d70857c050a3e9](https://github.com/chamilo/chamilo-lms/commit/e71437c8de809044ba3ae1b181d70857c050a3e9)
