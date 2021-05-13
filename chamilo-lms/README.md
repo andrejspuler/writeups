@@ -27,7 +27,7 @@ Another example is to load inband `/etc/passwd` file:
 Update to the latest release of Chamilo LMS. Following is the specific fix - Commit [e71437c8de809044ba3ae1b181d70857c050a3e9](https://github.com/chamilo/chamilo-lms/commit/e71437c8de809044ba3ae1b181d70857c050a3e9)
 
 ### Timeline
-2021-05-12 Reported to vendor
-2021-05-12 Fixed by vendor (in less than 9 hours)
-2021-05-13 Requested CVE ID by me
-2021-05-14 Issued [CVE-2021-32925](https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2021-32925)
+- 2021-05-12 Reported to vendor
+- 2021-05-12 Fixed by vendor (in less than 9 hours)
+- 2021-05-13 Requested CVE ID by me
+- 2021-05-14 Issued [CVE-2021-32925](https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2021-32925)
