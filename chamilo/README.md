@@ -9,19 +9,19 @@ Authenticated admins can trigger in-band Local File Inclusion or, if "expect" in
 ### PoC
 Because of some issue, first a normal dummy CSV import (import.csv) needs to be done in order to see the in-band errors later:
 
-![](img/xee_dummycsv.png)
+![](xee_dummycsv.png)
 
 After that, the XML can be uploaded:
 
-![](img/xee_xml_upload.png)
+![](xee_xml_upload.png)
 
 The import will fail, but the error message will contain in-band XXE RCE output if expect wrapper is installed (in the example, ls -la is executed):
 
-![](img/xee_rce.png)
+![](xee_rce.png)
 
 Another example is to load inband `/etc/passwd` file:
 
-![](img/xee_lfi.png)
+![](xee_lfi.png)
 
 ### Remediation
 Update to the latest release of Chamilo LMS. Following is the specific fix - Commit [e71437c8de809044ba3ae1b181d70857c050a3e9](https://github.com/chamilo/chamilo-lms/commit/e71437c8de809044ba3ae1b181d70857c050a3e9)
