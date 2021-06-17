@@ -2,6 +2,8 @@
 ## Overview 
 In the past week I've looked deeper into [Chamilo LMS](https://github.com/chamilo/chamilo-lms) to work on my white-box skills and found some vulnerabilities which I reported to the vendor:
 
+- [Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925](#authenticated-rcelfi-in-user-import-via-xml-external-entity---cve-2021-32925)
+
 ## Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925
 
 Affected versions: 1.11.x
