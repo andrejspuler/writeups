@@ -3,6 +3,12 @@
 In the past week I've looked deeper into [Chamilo LMS](https://github.com/chamilo/chamilo-lms) to work on my white-box skills and found some vulnerabilities which I reported to the vendor:
 
 - [Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925](#authenticated-rcelfi-in-user-import-via-xml-external-entity---cve-2021-32925)
+- [Unauthenticated SQL Injection in "compilatio" module](#unauthenticated-sql-injection-in-compilatio-module)
+- [Admin authenticated SQL injection vulnerability in sessions](#admin-authenticated-sql-injection-vulnerability-in-sessions)
+- [Multiple stored cross-site scripting vulnerabilities](#multiple-stored-cross-site-scripting-vulnerabilities)
+- [Unauthenticated SQL Injection #2 in plugin](#unauthenticated-sql-injection-2-in-plugin)
+- [Authenticated Remote Code Execution in import file](#authenticated-remote-code-execution-in-import-file)
+
 
 ## Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925
 
@@ -42,6 +48,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 ### References
 - https://support.chamilo.org/projects/1/wiki/Security_issues#Issue-58-2021-05-12-High-impact-very-low-risk-LFIRCE-vulnerability-in-users-import
 - https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2021-32925
+
 
 
 
