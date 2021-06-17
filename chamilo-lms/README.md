@@ -196,12 +196,15 @@ There is a plugin with its own web service, which has the authentication vulnera
 ### How to reproduce
 
 Following request will trigger the SQL Injection:
+
 ![](sqli_u2_req.png)
 
 This is because the parameters will be passed to authenticate method:
+
 ![](sqli_u2_san.png)
 
 which will sanitize only the login, leaving password vuln:
+
 ![](sqli_u2_vuln.png)
 
 ### Mitigation
