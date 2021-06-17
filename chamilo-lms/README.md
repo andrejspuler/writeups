@@ -5,6 +5,7 @@ In the past week I've looked deeper into [Chamilo LMS](https://github.com/chamil
 ## Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925
 
 Affected versions: 1.11.x
+
 Authenticated admins can exploit XEE vulnerability and trigger in-band Local File Inclusion when importing users using XML file on multiple places. If [expect wrapper](https://www.php.net/manual/en/wrappers.expect.php) is installed on the target box, code can be executed remotely.
 
 
@@ -45,6 +46,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 ## Unauthenticated SQL Injection in "compilatio" module
 
 Affected versions: 1.11.14
+
 There is a SQL Injection vulnerability that allows unauthenticated attackers to run arbitrary queries when the system has „compilatio“ enabled. The issue is in `main/plagiarism/compilatio/upload.php`, where the `doc` parameter isn't properly santitized:
 
 ![](sqli1_doc.png)
@@ -75,6 +77,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 ## Admin authenticated SQL injection vulnerability in sessions
 
 Affected versions: 1.11.x
+
 Another SQL Injection vulnerability which allows authenticated admins to run arbitrary queries and receive in-band responses.
 
 The vulnerable endpoint is at `/main/session/session_add.php`.
@@ -187,6 +190,7 @@ Update to the latest release of Chamilo LMS. Following are is the specific fixes
 ## Unauthenticated SQL Injection #2 in plugin
 
 Affected versions: 1.11.x
+
 There is a plugin with its own web service, which has the authentication vulnerable to SQL injection in password parameter (plugin doesn’t need to be enabled to trigger the SQL injection).
 
 ### How to reproduce
