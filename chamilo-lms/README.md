@@ -195,7 +195,14 @@ There is a plugin with its own web service, which has the authentication vulnera
 
 ### How to reproduce
 
-An example attack URL is http://chamilo/main/plagiarism/compilatio/upload.php?doc=123%20or%20sleep(10);--#
+Following request will trigger the SQL Injection:
+![](sqli_u2_req.png)
+
+This is because the parameters will be passed to authenticate method:
+![](sqli_u2_san.png)
+
+which will sanitize only the login, leaving password vuln:
+![](sqli_u2_vuln.png)
 
 ### Mitigation
 Update to the latest release of Chamilo LMS. Following is the specific fix - Commit [6a98e32bb04aa66cbd0d29ad74d7d20cc7e7e9c5](https://github.com/chamilo/chamilo-lms/commit/6a98e32bb04aa66cbd0d29ad74d7d20cc7e7e9c5)
