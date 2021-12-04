@@ -3,11 +3,12 @@
 In the past week I've looked deeper into [Chamilo LMS](https://github.com/chamilo/chamilo-lms) to work on my white-box skills and found some vulnerabilities which I reported to the vendor:
 
 - [Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925](#authenticated-rcelfi-in-user-import-via-xml-external-entity---cve-2021-32925)
-- [Unauthenticated SQL Injection in "compilatio" module](#unauthenticated-sql-injection-in-compilatio-module)
+- [Unauthenticated SQL Injection in "compilatio" module - CVE-2021-35414](#unauthenticated-sql-injection-in-compilatio-module)
 - [Admin authenticated SQL injection vulnerability in sessions](#admin-authenticated-sql-injection-vulnerability-in-sessions)
-- [Multiple stored cross-site scripting vulnerabilities](#multiple-stored-cross-site-scripting-vulnerabilities)
-- [Unauthenticated SQL Injection #2 in plugin](#unauthenticated-sql-injection-2-in-plugin)
-- [Authenticated Remote Code Execution in import file](#authenticated-remote-code-execution-in-import-file)
+- [Multiple stored cross-site scripting vulnerabilities - CVE-2021-35415](#multiple-stored-cross-site-scripting-vulnerabilities)
+- [Unauthenticated SQL Injection #2 in plugin - CVE-2021-35414](#unauthenticated-sql-injection-2-in-plugin)
+- [Authenticated Remote Code Execution in import file - CVE-2021-35413](#authenticated-remote-code-execution-in-import-file)
+
 
 
 ## Authenticated RCE/LFI in user import via XML External Entity - CVE-2021-32925
@@ -52,11 +53,15 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 
 
 
+
+
 ## Unauthenticated SQL Injection in "compilatio" module
+
+**CVE-2021-35413**
 
 Affected versions: 1.11.14
 
-There is a SQL Injection vulnerability that allows unauthenticated attackers to run arbitrary queries when the system has „compilatio“ enabled. The issue is in `main/plagiarism/compilatio/upload.php`, where the `doc` parameter isn't properly santitized:
+There is a SQL Injection vulnerability that allows unauthenticated attackers to run arbitrary queries when the system has „compilatio“ module enabled. The issue is in `main/plagiarism/compilatio/upload.php`, where the `doc` parameter isn't properly santitized:
 
 ![](sqli1_doc.png)
 
@@ -76,6 +81,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 ### Timeline
 - 2021-05-13 Reported to vendor
 - 2021-05-13 Fixed by vendor
+- 2021-12-04 Issued [CVE-2021-35414](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-35414)
 
 ### References
 - https://support.chamilo.org/projects/1/wiki/Security_issues#Issue-59-2021-05-13-High-impact-low-risk-Unauthenticated-SQL-injection-vulnerability-when-a-module-is-enabled
@@ -116,6 +122,8 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 
 ## Multiple stored cross-site scripting vulnerabilities
 
+**CVE-2021-35415**
+
 Affected versions: 1.11.x
 
 There were multiple stored XSS vulnerabilities found
@@ -135,11 +143,11 @@ Which triggers in `/user_portal.php`:
 
 ![](xss1_trigger.png)
 
-and also in '/index.php':
+and also in `/index.php`:
 
 ![](xss1_trigger2.png)
 
-and '/main/auth/sort_my_courses.php':
+and `/main/auth/sort_my_courses.php`:
 
 ![](xss1_trigger3.png)
 
@@ -187,6 +195,7 @@ Update to the latest release of Chamilo LMS. Following are is the specific fixes
 ### Timeline
 - 2021-05-14 Reported to vendor
 - 2021-05-14 Fixed by vendor
+- 2021-12-04 Issued [CVE-2021-35415](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-35415)
 
 ### References
 - https://support.chamilo.org/projects/1/wiki/Security_issues#Issue-61-2021-05-14-Low-impact-very-low-risk-XSS-in-course-name
@@ -197,6 +206,8 @@ Update to the latest release of Chamilo LMS. Following are is the specific fixes
 
 
 ## Unauthenticated SQL Injection #2 in plugin
+
+**CVE-2021-35414**
 
 Affected versions: 1.11.x
 
@@ -222,6 +233,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 ### Timeline
 - 2021-05-15 Reported to vendor
 - 2021-05-17 Fixed by vendor
+- 2021-12-04 Issued [CVE-2021-35414](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-35414)
 
 ### References
 - https://support.chamilo.org/projects/1/wiki/Security_issues#Issue-65-2021-05-15-High-impact-very-high-risk-Unauthenticated-SQL-injection-in-plugin
@@ -229,9 +241,11 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - Com
 
 ## Authenticated Remote Code Execution in import file
 
+**CVE-2021-35413**
+
 Affected versions: 1.11.x
 
-It is possible to upload zip-file containing .htaccess file to the course_intro_pdf_import.php import
+It is possible to upload zip-file containing `.htaccess` file when using the `course_intro_pdf_import.php` import functionality.
 
 ### How to reproduce
 
@@ -255,7 +269,7 @@ The contents of the zip file will be put in folder `/var/www/chamilo/app/cache/p
 
 ![](rce2_dir.png)
 
-And the .phx code can be executed by calling `/app/cache/pdfimport/test.phx`
+And the `.phx` code can be executed by calling `/app/cache/pdfimport/test.phx`
 
 ### Mitigation
 Update to the latest release of Chamilo LMS. Following is the specific fix - commits [2e5c004b57d551678a1815500ef91524ba7bb757](https://github.com/chamilo/chamilo-lms/commit/2e5c004b57d551678a1815500ef91524ba7bb757), [8ba572397445477d67ca55453fd8f29885bb19e5](https://github.com/chamilo/chamilo-lms/commit/8ba572397445477d67ca55453fd8f29885bb19e5), [905a21037ebc9bc5369f0fb380177cb56f496f5c](https://github.com/chamilo/chamilo-lms/commit/905a21037ebc9bc5369f0fb380177cb56f496f5c)
@@ -265,6 +279,7 @@ Update to the latest release of Chamilo LMS. Following is the specific fix - com
 - 2021-05-17 Fixed by vendor
 - 2021-05-19 Reported another attack vector (race condition)
 - 2021-05-20 Fixed by vendor
+- 2021-12-04 Issued [CVE-2021-35413](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-35413)
 
 ### References
 - https://support.chamilo.org/projects/1/wiki/Security_issues#Issue-66-2021-05-21-High-impact-very-low-risk-Authenticated-RCE-in-accessory-script
